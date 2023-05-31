@@ -8,31 +8,11 @@ enum Breathe {
 
 type RGB = { r: number; g: number; b: number; a: number };
 
-function darken(color: RGB, amount: number): RGB {
-  return {
-    r: Math.max(0, color.r - amount),
-    g: Math.max(0, color.g - amount),
-    b: Math.max(0, color.b - amount),
-    a: color.a,
-  };
-}
-
 function lighten(color: RGB, amount: number): RGB {
   return {
     r: Math.min(255, color.r + amount),
     g: Math.min(255, color.g + amount),
     b: Math.min(255, color.b + amount),
-    a: color.a,
-  };
-}
-
-function saturate(color: RGB, factor: number): RGB {
-  let gray = color.r * 0.3086 + color.g * 0.6094 + color.b * 0.082;
-
-  return {
-    r: Math.round(gray + (color.r - gray) * factor),
-    g: Math.round(gray + (color.g - gray) * factor),
-    b: Math.round(gray + (color.b - gray) * factor),
     a: color.a,
   };
 }
@@ -45,11 +25,11 @@ function toRGB(color: RGB): string {
   return `rgba(${color.r}, ${color.g}, ${color.b}, ${color.a})`;
 }
 
-function lerp(start, end, t) {
+function lerp(start: number, end: number, t: number) {
   return start * (1 - t) + end * t;
 }
 
-function interpolateColor(color1, color2, factor) {
+function interpolateColor(color1: RGB, color2: RGB, factor: number) {
   let r = Math.round(lerp(color1.r, color2.r, factor));
   let g = Math.round(lerp(color1.g, color2.g, factor));
   let b = Math.round(lerp(color1.b, color2.b, factor));
@@ -68,7 +48,7 @@ const presets = [
   },
 ] as const;
 
-function easeInOutCubic(x, exponent) {
+function easeInOutCubic(x: number, exponent: number) {
   return 0.4 + 0.6 * (0.5 * (1 - Math.cos(x * Math.PI * exponent)));
 }
 
