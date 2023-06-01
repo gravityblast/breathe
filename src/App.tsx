@@ -59,7 +59,7 @@ type State = {
   pointStarted: number;
 };
 
-const green: RGB = { r: 148, g: 157, b: 106, a: 1 };
+const green: RGB = { r: 8, g: 85, b: 187, a: 1 };
 const orange: RGB = lighten(green, 10);
 
 function App() {
