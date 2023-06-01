@@ -181,7 +181,7 @@ function App() {
           style={{
             color: "white",
             fontWeight: "bold",
-            fontSize: 19,
+            fontSize: 24,
             position: "absolute",
             top: "0",
             left: "0",
@@ -192,6 +192,7 @@ function App() {
             alignItems: "center",
             justifyContent: "center",
             transformOrigin: "center center",
+            transform: `scale(${easeInOutCubic(directionScale < 0.3 ? 0.3 : directionScale, 1)})`,
           }}
         >
           {state.point.state === Breathe.In ? "breathe in" : "breathe out"}
